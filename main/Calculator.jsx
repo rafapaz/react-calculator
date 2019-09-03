@@ -12,7 +12,8 @@ export default class Calculator extends React.Component {
             acumul : 0,
             curr : 0,
             displayValue : 0,
-            operator : ''
+            operator : '',
+            floatNumber: false
         }
 
         this.clearMemory = this.clearMemory.bind(this);
@@ -25,7 +26,8 @@ export default class Calculator extends React.Component {
             acumul : 0,
             curr : 0,
             displayValue : 0,
-            operator : ''
+            operator : '',
+            floatNumber: false
         });
     }
 
@@ -61,7 +63,18 @@ export default class Calculator extends React.Component {
     }
 
     setDigit(n) {
-        var number = parseFloat(this.state.curr.toString() + n);
+        if (n === '.')
+            this.setState({floatNumber: true});
+
+        if (this.state.floatNumber) {
+            var number_str = this.state.curr.toString() + '.' + n;
+            this.setState({floatNumber: false});
+        }
+        else {
+            var number_str = this.state.curr.toString() + n;
+        }
+
+        var number = parseFloat(number_str);
         this.setState({curr : number});
         this.setState({displayValue : number});
     }
