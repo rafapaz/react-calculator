@@ -81,10 +81,10 @@ export default class Calculator extends React.Component {
 
     render() {
         return (
-            <div className="calculator w3-panel w3-cell-row w3-border w3-round-large w3-padding-16">
+            <div className="calculator w3-panel w3-border w3-round-large w3-padding-16 w3-row">
                 <Display value={this.state.displayValue} />
-                <Button label="AC" click={this.clearMemory} />
-                <Button label="/" click={this.setOperation} /><br />
+                <Button label="AC" click={this.clearMemory} myClass="w3-button w3-border w3-round w3-col l9"/>
+                <Button label="/" click={this.setOperation} />
                 <Button label="7" click={this.setDigit} />
                 <Button label="8" click={this.setDigit} />
                 <Button label="9" click={this.setDigit} />
@@ -99,7 +99,7 @@ export default class Calculator extends React.Component {
                 <Button label="+" click={this.setOperation} />
                 <Button label="0" click={this.setDigit} />
                 <Button label="." click={this.setDigit} />
-                <Button label="=" click={this.setOperation} />
+                <Button label="=" click={this.setOperation} myClass="w3-button w3-border w3-round w3-col l6" />
             </div>
         );
     }
