@@ -1,6 +1,7 @@
 import React from 'react'
 import Button from './Button'
 import Display from './Display'
+import Menu from './Menu';
 import './w3.css'
 import './calculator.css'
 
@@ -65,13 +66,15 @@ export default class Calculator extends React.Component {
     setDigit(n) {
         if (n === '.')
             this.setState({floatNumber: true});
+        
+        var number_str = '';
 
         if (this.state.floatNumber) {
-            var number_str = this.state.curr.toString() + '.' + n;
+            number_str = this.state.curr.toString() + '.' + n;
             this.setState({floatNumber: false});
         }
         else {
-            var number_str = this.state.curr.toString() + n;
+            number_str = this.state.curr.toString() + n;
         }
 
         var number = parseFloat(number_str);
@@ -81,25 +84,28 @@ export default class Calculator extends React.Component {
 
     render() {
         return (
-            <div className="calculator w3-panel w3-border w3-round-large w3-padding-16 w3-row">
-                <Display value={this.state.displayValue} />
-                <Button label="AC" click={this.clearMemory} myClass="w3-button w3-border w3-round w3-col l9"/>
-                <Button label="/" click={this.setOperation} />
-                <Button label="7" click={this.setDigit} />
-                <Button label="8" click={this.setDigit} />
-                <Button label="9" click={this.setDigit} />
-                <Button label="*" click={this.setOperation} />
-                <Button label="4" click={this.setDigit} />
-                <Button label="5" click={this.setDigit} />
-                <Button label="6" click={this.setDigit} />
-                <Button label="-" click={this.setOperation} />
-                <Button label="1" click={this.setDigit} />
-                <Button label="2" click={this.setDigit} />
-                <Button label="3" click={this.setDigit} />
-                <Button label="+" click={this.setOperation} />
-                <Button label="0" click={this.setDigit} />
-                <Button label="." click={this.setDigit} />
-                <Button label="=" click={this.setOperation} myClass="w3-button w3-border w3-round w3-col l6" />
+            <div>
+            <Menu />
+                <div className="calculator w3-panel w3-border w3-round-large w3-padding-16 w3-row">
+                    <Display value={this.state.displayValue} />
+                    <Button label="AC" click={this.clearMemory} myClass="w3-button w3-border w3-round w3-col l9"/>
+                    <Button label="/" click={this.setOperation} />
+                    <Button label="7" click={this.setDigit} />
+                    <Button label="8" click={this.setDigit} />
+                    <Button label="9" click={this.setDigit} />
+                    <Button label="*" click={this.setOperation} />
+                    <Button label="4" click={this.setDigit} />
+                    <Button label="5" click={this.setDigit} />
+                    <Button label="6" click={this.setDigit} />
+                    <Button label="-" click={this.setOperation} />
+                    <Button label="1" click={this.setDigit} />
+                    <Button label="2" click={this.setDigit} />
+                    <Button label="3" click={this.setDigit} />
+                    <Button label="+" click={this.setOperation} />
+                    <Button label="0" click={this.setDigit} />
+                    <Button label="." click={this.setDigit} />
+                    <Button label="=" click={this.setOperation} myClass="w3-button w3-border w3-round w3-col l6" />
+                </div>
             </div>
         );
     }
